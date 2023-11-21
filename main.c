@@ -5,7 +5,7 @@
 
 #define MAX_DIE    6
 
-void opening (void) {
+void opening(void) {
      printf("|=*==**===***========***===**==*=|\n");
      printf("            shark game             \n");
      printf("|=*==**===***========***===**==*=|\n\n");
@@ -14,7 +14,7 @@ void opening (void) {
 
 int rolldie (void)
 {
-    rreturn rand()%MAX_DIE+1;
+    return rand()%MAX_DIE + 1;
 
 }
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     opening();
     
     //1. variable initialize & input player's name
-    board_initboard();
+    board_initBoard();
     
     //2. repeat (player's turn)
     do {
