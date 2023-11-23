@@ -1,6 +1,7 @@
 //main.c에 알려야하는 내용이므로 board.h로 이동 
 #define BOARDSTATUS_OK  1
 #define BOARDSTATUS_NOK 0
+#define N_BOARD   15
 
 //보드 초기화 
 int board_initialize(void);

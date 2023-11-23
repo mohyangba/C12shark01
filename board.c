@@ -6,6 +6,9 @@
 #define N_COINPOS 12
 #define MAX_COIN  4
 
+#define MAX_SHARKSTEP   6
+#define SHARK_INITPOS   -4
+
 static int board_status[N_BOARD]; // 파손 됐는지 아닌지 저장  
 static int board_coin[N_BOARD]; //어느 칸이 얼마의 코인을 가지고 있는가 
 
@@ -23,6 +26,8 @@ int board_initBoard(void)
             //board_coin의 i번째 요소 0설정;
             board_coin[i] = 0;
     }
+    board_sharkPosition = board_sharkPosition;
+    
     //coin 할당 
     for(i=0;i<N_COINPOS;i++)
     {
@@ -66,7 +71,7 @@ int board_printBoardStatus(void)
 }
 
 //특정 칸의 파손 여부 출력 
-void board_getBoardStatus (int pos)
+int board_getBoardStatus (int pos)
 {
      return board_status[pos];
 }
@@ -86,6 +91,21 @@ int board_getBoardCoin(int pos)
 int board_getSharkPosition(void);
 
 //상어 전진 명령  
-int board_stepShark(void);
+int board_stepShark(void)
+{
+       int step = 0;
+       step = rand() % MAX_SHARKSTEP + 1;
+       
+       int i;
+       for (i = shark_position+1; i <= shark_position + step; i++)
+       {
+           if (i>= 0 && i < N_BOARD)
+           board_status[i] = BOARDSTATUS_NOK;
+       }
+           
+       shark_position += step; 
+       
+       return shark_position;
+}
 
 
